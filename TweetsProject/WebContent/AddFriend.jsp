@@ -13,9 +13,11 @@
 <br>
 <center>
 <br>
-<h1 style="font-family:arial;color:white;font-size:32px;">You have sucessefully logged in as <%= request.getAttribute("Username") %></h1>
+<h1 style="font-family:arial;color:white;font-size:32px;">Add friends username</h1>
 <br>
-<form action="/TweetsProject/Tweet/<%= request.getAttribute("Username") %>" method=get>
+
+<form action="/TweetsProject/AddFriend/<%= request.getAttribute("Username") %>" method=post>
+<p style="color:white">username : <input name="username" rcols="50" maxlength="120"></input> </p>
 <input type="submit" value="Continue">
 </form>
 

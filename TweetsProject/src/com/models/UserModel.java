@@ -45,6 +45,51 @@ public void addUser(String user, String password, String email)
 	session.close();
 }
 
+public void MakeFriends(String user1, String user2)
+{
+	Session session = cluster.connect("keyspace2");
+	PreparedStatement statement = session.prepare("insert into Friends (user1, user2) values ('"+ user1 + "','"+ user2 + "');");	
+	BoundStatement boundStatement = new BoundStatement(statement);
+	session.execute(boundStatement);
+	//ResultSet rs = session.execute(boundStatement);
+	session.close();
+}
+
+public void ChangePass(String user, String password)
+{
+	Session session = cluster.connect("keyspace2");
+	PreparedStatement statement = session.prepare("update Users set password ='"+ password + "' where user ='"+ user +"';");	
+	BoundStatement boundStatement = new BoundStatement(statement);
+	session.execute(boundStatement);
+	//ResultSet rs = session.execute(boundStatement);
+	session.close();
+}
+
+public void ChangeMail(String user, String email)
+{
+	Session session = cluster.connect("keyspace2");
+	PreparedStatement statement = session.prepare("update Users set email ='"+ email + "' where user ='"+ user +"';");	
+	BoundStatement boundStatement = new BoundStatement(statement);
+	session.execute(boundStatement);
+	//ResultSet rs = session.execute(boundStatement);
+	session.close();
+}
+
+public String getEmail(String user)
+{
+	String email="";
+	
+	Session session = cluster.connect("keyspace2");
+	PreparedStatement statement = session.prepare("select * from Users where user = '"+ user +"';");	
+	BoundStatement boundStatement = new BoundStatement(statement);
+	ResultSet rs = session.execute(boundStatement);
+	for (Row row : rs) {
+		email = row.getString("email");
+	}
+	
+	return email;	
+}
+
 public int Check(String user, String password)
 {
 	String checkpassword="";

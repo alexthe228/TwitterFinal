@@ -45,6 +45,37 @@ public void addTweet(String NewTweet, String username)
 	session.close();
 }
 
+public int CheckFrineds(String user1, String user2)
+{
+	
+	Session session = cluster.connect("keyspace2");
+	PreparedStatement statement = session.prepare("SELECT * from Friends;");
+	BoundStatement boundStatement = new BoundStatement(statement);
+	ResultSet rs = session.execute(boundStatement);
+	
+	if (rs.isExhausted()) 
+	{
+		System.out.println("No friends");
+	}
+	for (Row row : rs) 
+	{
+		
+		if (row.getString("user1").equals(user1) )
+		{
+			if (row.getString("user2").equals(user2))
+				return 1;
+		}
+		
+		if (row.getString("user1").equals(user2))
+		{
+			if (row.getString("user2").equals(user1))
+				return 1;
+		}
+	}
+	
+	return 0;
+}
+
 public LinkedList<TweetStore> getTweets(String username) {
 LinkedList<TweetStore> tweetList = new LinkedList<TweetStore>();
 Session session = cluster.connect("keyspace2");
@@ -63,6 +94,17 @@ if( row.getString("user").equals(username) )
 	ts.setTweet(row.getString("tweet"));
 	ts.setUser(row.getString("user"));
 	tweetList.add(ts);
+}
+else
+{	
+	if (CheckFrineds(username, row.getString("user"))==1)
+	{
+
+		TweetStore ts = new TweetStore();
+		ts.setTweet(row.getString("tweet"));
+		ts.setUser(row.getString("user"));
+		tweetList.add(ts);
+	}
 }
 }
 }

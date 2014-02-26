@@ -1,5 +1,7 @@
 package com.servlets;
 
+import com.lib.Keyspaces;
+
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -30,9 +32,12 @@ private static final long serialVersionUID = 1L;
         // TODO Auto-generated constructor stub
 
     }
+    
     public void init(ServletConfig config) throws ServletException {
 // TODO Auto-generated method stub
 cluster = CassandraHosts.getCluster();
+Keyspaces createtables = new Keyspaces();
+createtables.SetUpKeySpaces(cluster);
 }
 	
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,7 +52,7 @@ cluster = CassandraHosts.getCluster();
 		    	System.out.println(email);
 		    	tm.addUser(user, password, email);
 		    	//Tweet.doGet(request, response);
-		    	RequestDispatcher rd = request.getRequestDispatcher("/Tweet.jsp");
+		    	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
 		    	rd.forward(request, response);
 		}
   

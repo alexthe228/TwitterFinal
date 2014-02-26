@@ -12,7 +12,10 @@
 
 <h1 style="font-family:arial;color:white;font-size:48px;">Twitter clone: </h1>
 <hr style = "color:white;font-size:48px;">
-<p style="font-family:arial;color:white;">Logged as <a href="Profile/<%=request.getAttribute("User") %>" style="background-color:white;color:black;text-decoration: none;"><%= request.getAttribute("User")%></a></p>
+<p style="font-family:arial;color:white;">Logged as <a href="/TweetsProject/Profile/<%=request.getAttribute("User") %>" style="background-color:white;color:black;text-decoration: none;"><%= request.getAttribute("User")%></a> 
+<p style="font-family:arial;color:white;"><a href="/TweetsProject/AddFriend/<%=request.getAttribute("User") %>" style="background-color:white;color:black;text-decoration: none;">Add friend</a></p>
+<p style="font-family:arial;color:white;"><a href="/TweetsProject/Login/" style="background-color:white;color:black;text-decoration: none;">log out</a></p></p>
+
 <br>
 <center>
 <%

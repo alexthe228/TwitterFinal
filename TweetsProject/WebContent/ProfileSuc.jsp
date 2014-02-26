@@ -13,8 +13,9 @@
 <br>
 <center>
 <br>
-<h1 style="font-family:arial;color:white;font-size:32px;">You have sucessefully logged in as <%= request.getAttribute("Username") %></h1>
+<h1 style="font-family:arial;color:white;font-size:32px;">You have sucessefully changed details </h1>
 <br>
+
 <form action="/TweetsProject/Tweet/<%= request.getAttribute("Username") %>" method=get>
 <input type="submit" value="Continue">
 </form>

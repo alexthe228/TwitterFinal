@@ -16,8 +16,9 @@
 
 <br>
 <h1 style="font-family:arial;color:white;font-size:32px;">Your account has been registered, please log in.</h1>
+
 <br>
-<form action="Tweet" method=get>
+<form action="Login" method=get>
 <h1 style="font-family:arial;color:white;font-size:32px;">Existing user</h1>
 <p style="color:white">username : <input name="username1" rcols="50" maxlength="120"></input> </p>
 <p style="color:white">password : <input name="password1" rcols="50" maxlength="120"></input> </p>
@@ -35,4 +36,6 @@
 
 </center>
 </body>
+
+
 </html>

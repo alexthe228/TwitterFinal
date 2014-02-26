@@ -12,11 +12,18 @@
 <hr style = "color:white;font-size:48px;">
 <br>
 <center>
+
+<p style="font-family:arial;color:white;">Username : <%=request.getAttribute("User") %></p>
+<p style="font-family:arial;color:white;">Email : <%=request.getAttribute("Email") %></p>
 <br>
-<h1 style="font-family:arial;color:white;font-size:32px;">You have sucessefully logged in as <%= request.getAttribute("Username") %></h1>
+<p style="font-family:arial;color:white;">Change details</p>
+
 <br>
-<form action="/TweetsProject/Tweet/<%= request.getAttribute("Username") %>" method=get>
-<input type="submit" value="Continue">
+<form action="Profile" method=post>
+<p style="color:white">password : <input name="password" rcols="50" maxlength="120"></input> </p>
+<p style="color:white">email : <input name="email" rcols="50" maxlength="120"></input> </p>
+<br>
+<input type="submit" value="Submit">
 </form>
 
 </center>
